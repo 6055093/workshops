@@ -23,6 +23,7 @@ class Engine {
       window.alert('Game over'); // 13
       return; // 13
     } // 13
+    updateScore();
     setTimeout(this.gameLoop, 20); // 14
   }; // 7
   isPlayerDead = () => {
@@ -44,6 +45,7 @@ class Engine {
     this.root = theRoot; // 3
     this.player = new Player(this.root); // 4
     this.enemies = []; // 5
+
     addBackground(this.root); // 6
   } // 2
 } // 1

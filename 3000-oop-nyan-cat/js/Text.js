@@ -1,19 +1,61 @@
-class Text { // 1
-    constructor(root, xPos, yPos) { // 2
-        let div = document.createElement("div") // 3
-        div.style.position = "absolute" // 3
-        div.style.left = xPos // 3
-        div.style.top = yPos // 3
-        div.style.color = "white" // 3
-        div.style.font = "bold 30px Impact" // 3
-        div.style.zIndex = 2000 // 3
-        root.appendChild(div) // 3
-        this.domElement = div // 3
-    } // 2
-    update(txt) { // 4
-        this.domElement.innerText = txt // 4
-    } // 4
+class Text {
+  // 1
+  constructor(xPos, yPos, txt) {
+    // 2
+    let root = document.getElementById('app');
+    let div = document.createElement('div'); // 3
+    let subdiv = document.createElement('div');
+    div.style.position = 'absolute'; // 3
+    div.style.left = xPos; // 3
+    div.style.top = yPos; // 3
+    div.style.color = 'white'; // 3
+    div.style.font = 'bold 20px Impact'; // 3
+    div.style.zIndex = 2000; // 3
+    div.id = 'scoreText';
+    subdiv.style.position = 'absolute'; // 3
+    subdiv.style.left = xPos; // 3
+    subdiv.style.top = yPos + 20; // 3
+    subdiv.style.color = 'white'; // 3
+    subdiv.style.font = 'bold 20px Impact'; // 3
+    subdiv.style.zIndex = 2000; // 3
+    subdiv.id = 'scoreNumber';
+    root.appendChild(subdiv); // 3
+    root.appendChild(div);
+    this.domElement = div; // 3
+    update(txt);
+  } // 2 // 4
 } // 1
+function update(txt) {
+  // 4
+  document.getElementById('scoreText').innerText = txt; // 4
+  document.getElementById('scoreNumber').innerText = 0;
+}
+
+let score = new Text(275, 30, 'Score:');
+console.log(score);
+
+function updateScore() {
+  if (MAX_ENEMIES === 1) {
+    document.getElementById('scoreNumber').innerText =
+      Number(document.getElementById('scoreNumber').innerText) + 1;
+  }
+  if (MAX_ENEMIES === 2) {
+    document.getElementById('scoreNumber').innerText =
+      Number(document.getElementById('scoreNumber').innerText) + 2;
+  }
+  if (MAX_ENEMIES === 3) {
+    document.getElementById('scoreNumber').innerText =
+      Number(document.getElementById('scoreNumber').innerText) + 3;
+  }
+  if (MAX_ENEMIES === 4) {
+    document.getElementById('scoreNumber').innerText =
+      Number(document.getElementById('scoreNumber').innerText) + 4;
+  }
+  if (MAX_ENEMIES === 5) {
+    document.getElementById('scoreNumber').innerText =
+      Number(document.getElementById('scoreNumber').innerText) + 5;
+  }
+}
 /* meta
 ({
     text: {

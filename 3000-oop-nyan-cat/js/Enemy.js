@@ -1,27 +1,46 @@
-class Enemy { // 1
-        update(timeDiff) { // 9
-                this.y = this.y + timeDiff * this.speed // 10
-                this.domElement.style.top = this.y + "px" // 10
-                if (this.y > GAME_HEIGHT) { // 11
-                        this.root.removeChild(this.domElement) // 11
-                        this.destroyed = true // 11
-                } // 11
-        } // 9
-        constructor(theRoot, enemySpot) { // 2
-                this.root = theRoot // 3
-                this.spot = enemySpot // 3
-                this.x = enemySpot * ENEMY_WIDTH /* 4 */
-                this.y = -ENEMY_HEIGHT /* 5 */
-                this.destroyed = false // 5
-                this.domElement = document.createElement("img") // 6
-                this.domElement.src = "images/enemy.png" // 6
-                this.domElement.style.position = "absolute" // 6
-                this.domElement.style.left = this.x + "px" // 6
-                this.domElement.style.top = this.y + "px" // 6
-                this.domElement.style.zIndex = 5 // 6
-                theRoot.appendChild(this.domElement) // 7
-                this.speed = Math.random() / 2 + 0.25 // 8
-        } // 2
+class Enemy {
+  // 1
+  update(timeDiff) {
+    // 9
+    this.y = this.y + timeDiff * this.speed; // 10
+    this.domElement.style.top = this.y + 'px'; // 10
+    if (this.y > GAME_HEIGHT) {
+      // 11
+      this.root.removeChild(this.domElement); // 11
+      this.destroyed = true; // 11
+    } // 11
+  } // 9
+  constructor(theRoot, enemySpot) {
+    // 2
+    this.root = theRoot; // 3
+    this.spot = enemySpot; // 3
+    this.x = enemySpot * ENEMY_WIDTH; /* 4 */
+    this.y = -ENEMY_HEIGHT; /* 5 */
+    this.destroyed = false; // 5
+    this.domElement = document.createElement('img'); // 6
+    this.domElement.src = 'images/enemy.png'; // 6
+    this.domElement.style.position = 'absolute'; // 6
+    this.domElement.style.left = this.x + 'px'; // 6
+    this.domElement.style.top = this.y + 'px'; // 6
+    this.domElement.style.zIndex = 5; // 6
+    theRoot.appendChild(this.domElement); // 7
+    this.speed = Math.random() / 2 + 0.25; // 8
+    if (MAX_ENEMIES === 1) {
+      this.speed = Math.random() / 1.75 + 0;
+    }
+    if (MAX_ENEMIES === 2) {
+      this.speed = Math.random() / 2 + 0.25;
+    }
+    if (MAX_ENEMIES === 3) {
+      this.speed = Math.random() / 2.25 + 0.5;
+    }
+    if (MAX_ENEMIES === 4) {
+      this.speed = Math.random() / 2.5 + 0.75;
+    }
+    if (MAX_ENEMIES === 5) {
+      this.speed = Math.random() / 2.75 + 1;
+    }
+  } // 2
 } // 1
 
 /* meta
