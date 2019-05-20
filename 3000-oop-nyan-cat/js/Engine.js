@@ -1,32 +1,50 @@
-class Engine { // 1
-  gameLoop = () => { // 7
-    if (this.lastFrame === undefined) this.lastFrame = (new Date).getTime() // 8
-    let timeDiff = (new Date).getTime() - this.lastFrame // 8
-    this.lastFrame = (new Date).getTime() // 8
-    this.enemies.forEach(enemy => { // 9
-      enemy.update(timeDiff) // 9
-    }) // 9
-    this.enemies = this.enemies.filter(enemy => { // 10
-      return !enemy.destroyed // 10
-    }) // 10
-    while (this.enemies.length < MAX_ENEMIES) { // 11
-      let spot = nextEnemySpot(this.enemies) // 12
-      this.enemies.push(new Enemy(this.root, spot)) // 12
+class Engine {
+  // 1
+  gameLoop = () => {
+    // 7
+    if (this.lastFrame === undefined) this.lastFrame = new Date().getTime(); // 8
+    let timeDiff = new Date().getTime() - this.lastFrame; // 8
+    this.lastFrame = new Date().getTime(); // 8
+    this.enemies.forEach(enemy => {
+      // 9
+      enemy.update(timeDiff); // 9
+    }); // 9
+    this.enemies = this.enemies.filter(enemy => {
+      // 10
+      return !enemy.destroyed; // 10
+    }); // 10
+    while (this.enemies.length < MAX_ENEMIES) {
+      // 11
+      let spot = nextEnemySpot(this.enemies); // 12
+      this.enemies.push(new Enemy(this.root, spot)); // 12
     } // 11
-    if (this.isPlayerDead()) { // 13
-      window.alert("Game over") // 13
-      return // 13
+    if (this.isPlayerDead()) {
+      // 13
+      window.alert('Game over'); // 13
+      return; // 13
     } // 13
-    setTimeout(this.gameLoop, 20) // 14
-  } // 7
-  isPlayerDead = () => { // 15
-    return false // 15
-  } // 15
-  constructor(theRoot) { // 2
-    this.root = theRoot // 3
-    this.player = new Player(this.root) // 4
-    this.enemies = [] // 5
-    addBackground(this.root) // 6
+    setTimeout(this.gameLoop, 20); // 14
+  }; // 7
+  isPlayerDead = () => {
+    this.player.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
+    console.log(this.player, this.enemies);
+    for (let i = 0; i < this.enemies.length; i++) {
+      if (
+        (this.player.y < this.enemies[i].y ||
+          this.player.y < this.enemies[i].y + ENEMY_HEIGHT) &&
+        this.enemies[i].x === this.player.x
+      ) {
+        return true;
+      }
+    }
+    return false; // 15
+  }; // 15
+  constructor(theRoot) {
+    // 2
+    this.root = theRoot; // 3
+    this.player = new Player(this.root); // 4
+    this.enemies = []; // 5
+    addBackground(this.root); // 6
   } // 2
 } // 1
 

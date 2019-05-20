@@ -1,27 +1,33 @@
-class Player { // 1
-    constructor(root) { // 2
-        this.x = 2 * PLAYER_WIDTH // 3
-        let y = GAME_HEIGHT - PLAYER_HEIGHT - 10 // 4
-        this.domElement = document.createElement("img") // 5
-        this.domElement.src = "images/player.png" // 6
-        this.domElement.style.position = "absolute" // 6
-        this.domElement.style.left = this.x + "px" // 6
-        this.domElement.style.top = y + "px" // 6
-        this.domElement.style.zIndex = "10" // 6
-        root.appendChild(this.domElement) // 7
-    } // 2
-    moveLeft() { // 8
-        if (this.x > 0) { // 9
-            this.x = this.x - PLAYER_WIDTH // 9
-        } // 9
-        this.domElement.style.left = this.x + "px" // 10
-    } // 8
-    moveRight() { // 11
-        if (this.x + PLAYER_WIDTH < GAME_WIDTH) { // 11
-            this.x = this.x + PLAYER_WIDTH // 11
-        } // 11
-        this.domElement.style.left = this.x + "px" // 11
+class Player {
+  // 1
+  constructor(root) {
+    // 2
+    this.x = 2 * PLAYER_WIDTH; // 3
+    let y = GAME_HEIGHT - PLAYER_HEIGHT - 10; // 4
+    this.domElement = document.createElement('img'); // 5
+    this.domElement.src = 'images/player.png'; // 6
+    this.domElement.style.position = 'absolute'; // 6
+    this.domElement.style.left = this.x + 'px'; // 6
+    this.domElement.style.top = y + 'px'; // 6
+    this.domElement.style.zIndex = '10'; // 6
+    root.appendChild(this.domElement); // 7
+  } // 2
+  moveLeft() {
+    // 8
+    if (this.x > 0) {
+      // 9
+      this.x = this.x - PLAYER_WIDTH; // 9
+    } // 9
+    this.domElement.style.left = this.x + 'px'; // 10
+  } // 8
+  moveRight() {
+    // 11
+    if (this.x + PLAYER_WIDTH < GAME_WIDTH) {
+      // 11
+      this.x = this.x + PLAYER_WIDTH; // 11
     } // 11
+    this.domElement.style.left = this.x + 'px'; // 11
+  } // 11
 } // 1
 
 /* meta
